@@ -98,11 +98,9 @@ if(!isset($_GET["id"])){
       <?php
             $servername = "wyvern.cs.newpaltz.edu";$sqlusername = "csteam";$password = "j8wez0";$dbname = "csteam_db";
             $conn = new mysqli($servername, $sqlusername, $password, $dbname);
-            $userName = $_SESSION['userName'];
             $id = $_SESSION['id'];
             $sql = "SELECT * FROM csteamQuestions WHERE ID ='$id'";
             $result = $conn->query($sql);
-            $row = mysql_fetch_array($result);
             if ($result) {
                 $row = $result->fetch_assoc()
             ?>
@@ -120,8 +118,9 @@ if(!isset($_GET["id"])){
          
 
          <div style="float:right">  <i class="fas fa-clock mr-3" ></i> <?php 
-         $date = date_create($row["dateTime"]);
-          echo date_format($date, 'h:i A - m/d/Y');?> 
+          date_default_timezone_set("America/New_York");
+          $date = date_create($row["dateTime"]);
+           echo date_format($date, 'h:i A - m/d/Y');?> 
          </div>
          <br>
          <hr class="my-2">

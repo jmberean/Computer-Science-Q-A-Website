@@ -117,9 +117,9 @@ if($conn){
           </td>
           <td>
           <?php 
-                        $date = date_create($row["dateTime"]);
-                        echo date_format($date, 'h:i A <\b\r> m/d/Y');
-              // echo $row["dateTime"];
+                       date_default_timezone_set("America/New_York");
+                       $date = date_create($row["dateTime"]);
+                        echo date_format($date, 'h:i A - m/d/Y'); 
               ?>
           </td>
           <td>
